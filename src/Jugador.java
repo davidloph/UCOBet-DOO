@@ -43,7 +43,7 @@ public class Jugador {
                 "Documento: " + cedula + '\n' +
                 "Correo: " + email + '\n' +
                 "Celular: " + celular + '\n' +
-                "Apuesta: " + apuesta + '\n' +
+                "Apuesta: $" + apuesta + '\n' +
                 "Sorteo: " + numSorteo;
     }
 }
