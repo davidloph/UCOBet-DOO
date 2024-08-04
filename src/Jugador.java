@@ -3,16 +3,16 @@ public class Jugador {
     private String email;
     private String cedula;
     private String celular;
-    private String numerosAApostar;
+    int numerosAApostar;
     private String apuesta;
     private String numSorteo;
 
-    public Jugador(String cedula, String celular, String email, String nombre, String numerosAApostar, String apuesta,  String numSorteo) {
+    public Jugador(String cedula, String celular, String email, String nombre, int numerosAApostar, String apuesta,  String numSorteo) {
         this.cedula = cedula;
         this.celular = celular;
         this.email = email;
         this.nombre = nombre;
-        this.numerosAApostar;
+        this.numerosAApostar = numerosAApostar;
         this.apuesta = apuesta;
         this.numSorteo = numSorteo;
     }
@@ -33,7 +33,7 @@ public class Jugador {
         return nombre;
     }
 
-    public String getNumerosAApostar() {return numerosAApostar;}
+    public int getNumerosAApostar() {return numerosAApostar;}
 
     public String getApuesta() {return apuesta;}
 
