@@ -7,6 +7,7 @@ public class DatosJugador {
         String email;
         String cedula;
         String celular;
+        String apuesta;
         String numSorteo;
         while(true) {
             nombre = JOptionPane.showInputDialog("Nombre: ");
@@ -41,6 +42,14 @@ public class DatosJugador {
             }
         }
         while (true) {
+            apuesta = JOptionPane.showInputDialog("Valor apuesta: ");
+            if (apuesta == null || apuesta.isBlank() || !apuesta.matches("\\d+") || apuesta.contains("-")) {
+                JOptionPane.showMessageDialog(null, "Ingrese un valor válido.");
+            } else {
+                break;
+            }
+        }
+        while (true) {
             numSorteo = JOptionPane.showInputDialog("Sorteo: ");
             if (numSorteo == null || numSorteo.isBlank() || numSorteo.length() > 4 || !numSorteo.matches("\\d+")) {
                 JOptionPane.showMessageDialog(null, "Ingrese un numero válido.");
@@ -51,7 +60,7 @@ public class DatosJugador {
 
 
 
-        Jugador jugador = new Jugador(nombre, email, cedula, celular, numSorteo);
+        Jugador jugador = new Jugador(nombre, email, cedula, celular, apuesta, numSorteo);
         JOptionPane.showMessageDialog(null, "Jugador guardado:\n\n" + jugador.toString());
         jugadores.add(jugador);
 
