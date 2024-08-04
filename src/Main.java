@@ -22,6 +22,8 @@ public class Main {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         LocalDateTime momentoSorteo;
         String numGanador;
+        short napa;
+
 
         while (true) {
             momentoSorteo = FechaHoraDeJuego.obtenerFechaSorteo();
@@ -39,7 +41,14 @@ public class Main {
                 JOptionPane.showMessageDialog(null, "Ingrese un número válido.");
             }
         }
-
+        while (true) {
+            try {
+                napa = Short.parseShort(JOptionPane.showInputDialog(null, "Ingrese el porcentaje de la ñapa: "));
+                break;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Ingrese un valor válido.");
+            }
+        }
 
         while(Duration.between(LocalDateTime.now(), momentoSorteo).toSeconds() > 0) {
             int ingresarJugador = JOptionPane.showOptionDialog(null, "Fecha y hora del sorteo: " + momentoSorteo.getYear() + "/" + momentoSorteo.getMonth() + "/" +  momentoSorteo.getDayOfMonth() + "  " +  momentoSorteo.getHour() + ":" +  momentoSorteo.getMinute() + ":" + momentoSorteo.getSecond(), "UCO Bet", 0 , 0, UCOLOGO, Arrays.asList("Ingresar jugador", "Estadísticas", "Cancelar Sorteo", "Sortear").toArray(),0);
