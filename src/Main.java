@@ -16,6 +16,7 @@ public class Main {
         final ImageIcon UCOLOGO = new ImageIcon(Main.class.getResource("uco.png"));
 
         //Puro testeo de push papi
+        //testeo 2
 
         ArrayList<Jugador> jugadores = new ArrayList<>();
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
