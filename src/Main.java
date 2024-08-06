@@ -51,7 +51,7 @@ public class Main {
         }
 
         while(Duration.between(LocalDateTime.now(), momentoSorteo).toSeconds() > 0) {
-            int ingresarJugador = JOptionPane.showOptionDialog(null, "Fecha y hora del sorteo: " + momentoSorteo.getYear() + "/" + momentoSorteo.getMonth() + "/" +  momentoSorteo.getDayOfMonth() + "  " +  momentoSorteo.getHour() + ":" +  momentoSorteo.getMinute() + ":" + momentoSorteo.getSecond(), "UCO Bet", 0 , 0, UCOLOGO, Arrays.asList("Ingresar jugador", "Estadísticas", "Cancelar Sorteo", "Sortear").toArray(),0);
+            int ingresarJugador = JOptionPane.showOptionDialog(null, "Fecha y hora del sorteo: " + momentoSorteo.getYear() + "/" + momentoSorteo.getMonth() + "/" +  momentoSorteo.getDayOfMonth() + "  " +  momentoSorteo.getHour() + ":" +  momentoSorteo.getMinute() + ":" + momentoSorteo.getSecond(), "UCO Bet", 0 , 0, UCOLOGO, Arrays.asList("Ingresar jugador", "Estadísticas", "Cuotas", "Sortear").toArray(),0);
 
            if (LocalDateTime.now().compareTo(momentoSorteo) >=0) {
                for (Jugador jugador : Ganadores.ganadores(jugadores, numGanador)) {
@@ -60,12 +60,14 @@ public class Main {
 
            }else if (ingresarJugador == INGRESAR_JUGADOR && ValidacionParaJugar.validacion(momentoSorteo)) {
                 DatosJugador.datosJugador(jugadores);
-            } else if (ingresarJugador == INGRESAR_JUGADOR && !ValidacionParaJugar.validacion(momentoSorteo)) {
+           } else if (ingresarJugador == INGRESAR_JUGADOR && !ValidacionParaJugar.validacion(momentoSorteo)) {
                 JOptionPane.showMessageDialog(null, "Tiempo agotado...");
-            } else if (ingresarJugador == 2 || ingresarJugador == -1) {
-                JOptionPane.showMessageDialog(null, "Sorteo cancelado.");
-                System.exit(0);
-            } else if (ingresarJugador == SORTEAR && momentoSorteo.compareTo(LocalDateTime.now()) > 0){
+           } else if (ingresarJugador == 2) {
+                JOptionPane.showMessageDialog(null, "1 Número: $" + Cuota.CUOTA1NUMERO + "\n" + "2 Números: $" + Cuota.CUOTA2NUMEROS + "\n" + "3 Números: $" + Cuota.CUOTA3NUMEROS + "\n" + "4 Números: $" + Cuota.CUOTA4NUMEROS);
+           } else if (ingresarJugador == -1) {
+               JOptionPane.showMessageDialog(null, "Sorteo cancelado.");
+               System.exit(0);
+           } else if (ingresarJugador == SORTEAR && momentoSorteo.compareTo(LocalDateTime.now()) > 0){
                 Duration tiempoRestante = Duration.between(LocalDateTime.now(), momentoSorteo);
                 JOptionPane.showMessageDialog(null, "Tiempo restante:\n" + tiempoRestante.toDays() + ":" + tiempoRestante.toHours() %24 + ":" + tiempoRestante.toMinutes() %60 + ":" + tiempoRestante.toSeconds() %60);
             }
